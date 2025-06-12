@@ -90,7 +90,7 @@ function App(): React.JSX.Element {
             paddingBottom: safePadding,
           }}>
           <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+            Edit <Text style={styles.primary}>App.tsx</Text> to change this
             screen and then come back to see your edits.
           </Section>
           <Section title="See Your Changes">
@@ -126,6 +126,9 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
+  primary: {
+    fontFamily: 'HappySwirly'
+  }
 });
 
 export default App;
