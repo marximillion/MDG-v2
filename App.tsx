@@ -23,6 +23,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -78,10 +79,9 @@ function App(): React.JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <ScrollView
-        style={backgroundStyle}>
+      <ScrollView style={backgroundStyle}>
         <View style={{paddingRight: safePadding}}>
-          <Header/>
+          <Header />
         </View>
         <View
           style={{
@@ -92,7 +92,9 @@ function App(): React.JSX.Element {
           <Section title="Step One">
             Edit <Text style={styles.primary}>App.tsx</Text> to change this
             screen and then come back to see your edits.
+            icon
           </Section>
+          <FontAwesome6 name="comments" size={30} color={"#900"} />
           <Section title="See Your Changes">
             <ReloadInstructions />
           </Section>
@@ -128,6 +130,9 @@ const styles = StyleSheet.create({
   },
   primary: {
     fontFamily: 'HappySwirly'
+  },
+  icon: {
+    color: 'red',
   }
 });
 
