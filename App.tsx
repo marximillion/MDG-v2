@@ -5,10 +5,10 @@
 /**
  * Imports
  */
-import {Component, ReactNode} from 'react';
-import {NavigableAppContainer} from './app/navigation/NavigableAppContainer';
+import { Component, ReactNode } from 'react';
+import { NavigableAppContainer } from './app/navigation/NavigableAppContainer';
 import React from 'react';
-import {StatusBar} from 'react-native';
+import { StatusBar } from 'react-native';
 
 /**
  * Props

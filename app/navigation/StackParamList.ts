@@ -7,9 +7,9 @@
  */
 // import { SimpleWebviewProps } from "../screens/SimpleWebViewScreen";
 // import { MovieDetailsProps } from "../screens/movie/MovieDetailsScreen";
-import {HomeProps} from '../screens/HomeScreen';
+import { HomeProps } from '../screens/HomeScreen';
 // import { ProfileProps } from "../screens/practice/ProfileScreen";
-import {TutorialProps} from '../screens/practice/TutorialScreen';
+import { TutorialProps } from '../screens/practice/TutorialScreen';
 
 /**
  * Used to assign which types (Props) the route will have access to?

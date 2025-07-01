@@ -5,19 +5,19 @@
 /**
  * Imports
  */
-import {Edges, SafeAreaView} from 'react-native-safe-area-context';
-import {GlobalStyles} from '../../styles/GlobalStyles';
+import { Edges, SafeAreaView } from 'react-native-safe-area-context';
+import { GlobalStyles } from '../../styles/GlobalStyles';
 import {
   ImageBackground,
   ImageSourcePropType,
   StatusBar,
   StyleProp,
   StyleSheet,
-  ViewStyle,
+  ViewStyle
 } from 'react-native';
-import {images} from '../../assets/images';
-import React, {Component, ReactNode} from 'react';
-import {space} from '../../styles/size';
+import { images } from '../../assets/images';
+import React, { Component, ReactNode } from 'react';
+import { space } from '../../styles/size';
 
 /**
  * Props
@@ -52,7 +52,7 @@ export default class ScreenContainer extends Component<Props> {
    * Render: With image background
    */
   private renderWithImageBackground = () => {
-    const {safeAreaViewStyle, imageSource} = this.props;
+    const { safeAreaViewStyle, imageSource } = this.props;
     const backgroundImage = imageSource ?? images.background_image;
 
     return (
@@ -64,7 +64,7 @@ export default class ScreenContainer extends Component<Props> {
         <SafeAreaView
           style={[
             safeAreaViewStyle,
-            styles.safeAreaWithImageBackgroundContainer,
+            styles.safeAreaWithImageBackgroundContainer
           ]}
           edges={['right', 'bottom', 'left']}>
           {this.props.children}
@@ -77,7 +77,7 @@ export default class ScreenContainer extends Component<Props> {
    * Render: Without image background
    */
   private renderWithoutImageBackground = () => {
-    const {safeAreaViewStyle} = this.props;
+    const { safeAreaViewStyle } = this.props;
 
     return (
       <>
@@ -85,7 +85,7 @@ export default class ScreenContainer extends Component<Props> {
         <SafeAreaView
           style={[
             safeAreaViewStyle,
-            styles.safeAreaWithoutImageBackgroundContainer,
+            styles.safeAreaWithoutImageBackgroundContainer
           ]}
           edges={['right', 'bottom', 'left']}>
           {this.props.children}
@@ -100,7 +100,7 @@ export default class ScreenContainer extends Component<Props> {
    * @returns ReactNode
    */
   public render(): ReactNode {
-    const {withImageBackground} = this.props;
+    const { withImageBackground } = this.props;
 
     return withImageBackground
       ? this.renderWithImageBackground()
@@ -116,11 +116,11 @@ const styles = StyleSheet.create({
   safeAreaWithImageBackgroundContainer: {
     flex: 1,
     paddingTop: space.vm7,
-    width: '100%',
+    width: '100%'
   },
   safeAreaWithoutImageBackgroundContainer: {
     flex: 1,
-    paddingTop: space.vm7,
-  },
+    paddingTop: space.vm7
+  }
 }); // End of styles()
 //End of file

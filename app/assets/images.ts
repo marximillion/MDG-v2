@@ -1,5 +1,4 @@
 export const images = Object.freeze({
-
   // Background Images
   background_image: require('./imageAssets/backgroundImage.jpeg'),
 
@@ -18,5 +17,5 @@ export const images = Object.freeze({
   // JavaScript & jQuery images
   check_cross: require('./imageAssets/check-cross.png'),
   travelworthy_backdrop: require('./imageAssets/travelworthy-backdrop.jpg'),
-  travelworthy_logo: require('./imageAssets/travelworthy-logo.gif'),
+  travelworthy_logo: require('./imageAssets/travelworthy-logo.gif')
 });

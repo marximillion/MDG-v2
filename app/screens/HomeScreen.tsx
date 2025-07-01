@@ -6,11 +6,11 @@
  * Imports
  */
 import Button from './components/Button';
-import {Component, ReactNode} from 'react';
-import {RouteProp} from '@react-navigation/native';
+import { Component, ReactNode } from 'react';
+import { RouteProp } from '@react-navigation/native';
 import ScreenContainer from './components/ScreenContainer';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {StackParamList} from '../navigation/StackParamList';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { StackParamList } from '../navigation/StackParamList';
 
 /**
  * Props
@@ -50,7 +50,7 @@ export default class HomeScreen extends Component<Props, State> {
    * - Navigate to info screen
    */
   private navigateInfo = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate('Info');
   }; // End of navigateInfo()
 
@@ -59,7 +59,7 @@ export default class HomeScreen extends Component<Props, State> {
    * - Navigate to practice screen
    */
   private navigatePractice = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate('Practice');
   }; // End of navigatePractice()
 
@@ -68,7 +68,7 @@ export default class HomeScreen extends Component<Props, State> {
    * - Navigate to movie screen
    */
   private navigateMovie = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     navigation.navigate('Movie');
   }; // End of navigateMovie()
 

@@ -6,13 +6,13 @@
  * Imports
  */
 import React from 'react';
-import {space} from '../../styles/size';
+import { space } from '../../styles/size';
 import {
   StyleSheet,
   Text,
   TouchableOpacity,
   TouchableOpacityProps,
-  View,
+  View
 } from 'react-native';
 
 /**
@@ -28,7 +28,7 @@ interface Props extends TouchableOpacityProps {
  * Button component
  */
 export default function Button(props: Props): React.JSX.Element {
-  const {styleText, title, type, ...touchableOpacityProps} = props;
+  const { styleText, title, type, ...touchableOpacityProps } = props;
 
   let buttonStyle, containerStyle;
   switch (type) {
@@ -85,49 +85,49 @@ const base = StyleSheet.create({
     marginHorizontal: space.hm1,
     marginVertical: space.vm1,
     paddingHorizontal: space.hm2,
-    paddingVertical: space.vm2,
+    paddingVertical: space.vm2
   },
   buttonText: {
     color: 'black',
     fontWeight: 'bold',
-    textAlign: 'center',
-  },
+    textAlign: 'center'
+  }
 });
 
 const styles = StyleSheet.create({
   // Container Styles
   buttonContainer: {
-    alignSelf: 'center',
+    alignSelf: 'center'
   },
   buttonWideContainer: {
-    alignSelf: 'stretch',
+    alignSelf: 'stretch'
   },
 
   // Button Styles
   buttonPrimary: {
-    ...base.button,
+    ...base.button
   },
   buttonWide: {
     ...base.button,
-    backgroundColor: '#e8a2fa',
+    backgroundColor: '#e8a2fa'
   },
   buttonOnlyText: {
     ...base.button,
     backgroundColor: 'transparent',
-    borderWidth: 0,
+    borderWidth: 0
   },
 
   // Text Styles
   buttonTextSmall: {
     ...base.buttonText,
-    fontSize: 8,
+    fontSize: 8
   },
   buttonTextStandard: {
     ...base.buttonText,
-    fontSize: 20,
+    fontSize: 20
   },
   buttonTextLarge: {
     ...base.buttonText,
-    fontSize: 40,
-  },
+    fontSize: 40
+  }
 });

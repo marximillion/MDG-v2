@@ -15,16 +15,16 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
 // import {CarInputFunctional} from './CarInputFunctional';
-import {Component, ReactNode} from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {RouteProp} from '@react-navigation/native';
-import {StackParamList} from '../../navigation/StackParamList';
+import { Component, ReactNode } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RouteProp } from '@react-navigation/native';
+import { StackParamList } from '../../navigation/StackParamList';
 import Button from '../components/Button';
-import {images} from '../../assets/images';
+import { images } from '../../assets/images';
 
 /**
  * Props
@@ -66,7 +66,7 @@ export default class TutorialScreen extends Component<Props, State> {
     this.state = {
       numOfPress: this.props.route.params.details.age ?? 0, // testing prop passing - should be set to the age entered from Tutorial
       busy: true,
-      color: '#FFC0CB',
+      color: '#FFC0CB'
     };
 
     console.log('TutorialScreen::Constructor::Firing');
@@ -95,10 +95,10 @@ export default class TutorialScreen extends Component<Props, State> {
    * Reset App Screen Background Color and number of press counter
    */
   private onPressReset = () => {
-    const {age} = this.props.route.params.details;
+    const { age } = this.props.route.params.details;
 
     // reset ALL states
-    this.setState({numOfPress: age, color: '#FFC0CB', busy: true});
+    this.setState({ numOfPress: age, color: '#FFC0CB', busy: true });
     console.log(`Button Press and Background Color RESET`);
     Alert.alert(`Button Press and Background Color has been reset`);
   }; // End of onPressReset()
@@ -117,7 +117,7 @@ export default class TutorialScreen extends Component<Props, State> {
     };
 
     // update color state
-    this.setState({color: randColor()});
+    this.setState({ color: randColor() });
   }; // End of onPressColor()
 
   /**
@@ -126,14 +126,14 @@ export default class TutorialScreen extends Component<Props, State> {
    */
   private onPressAdd = () => {
     // extract numOfPress variable from state
-    const {numOfPress} = this.state;
+    const { numOfPress } = this.state;
 
     if (numOfPress) {
       // update numOfPress state
-      this.setState({numOfPress: numOfPress + 1});
+      this.setState({ numOfPress: numOfPress + 1 });
     }
 
-    this.setState({busy: false});
+    this.setState({ busy: false });
   }; // End of onPressAdd()
 
   /**
@@ -142,14 +142,14 @@ export default class TutorialScreen extends Component<Props, State> {
    */
   private onPressSubtract = () => {
     // extract numOfPress variable from state
-    const {numOfPress} = this.state;
+    const { numOfPress } = this.state;
 
     if (numOfPress) {
       // update numOfPress state
-      this.setState({numOfPress: numOfPress + 1});
+      this.setState({ numOfPress: numOfPress + 1 });
     }
 
-    this.setState({busy: false});
+    this.setState({ busy: false });
   }; // End of onPressSubtract()
 
   // ===================================================================== //
@@ -182,13 +182,13 @@ export default class TutorialScreen extends Component<Props, State> {
    */
   public render(): ReactNode {
     // extract variables from state
-    const {numOfPress, color} = this.state;
+    const { numOfPress, color } = this.state;
 
     /**
      * destructuring
      * extract the props from the specific route ("Tutorial") to the given variable names in the {...}
      */
-    const {details} = this.props.route.params;
+    const { details } = this.props.route.params;
 
     // set image variable
     // const image = require('../assets/clown.png');
@@ -205,7 +205,7 @@ export default class TutorialScreen extends Component<Props, State> {
               style={styleSheet.scrollViewContainer}
               contentContainerStyle={styleSheet.scrollViewContentContainer}>
               <View
-                style={[styleSheet.mainContainer, {backgroundColor: color}]}>
+                style={[styleSheet.mainContainer, { backgroundColor: color }]}>
                 <Text style={styleSheet.titleText}>
                   {details.firstName} {details.lastName} {`\n`}
                   {'Tutorial Screen'}
@@ -214,13 +214,13 @@ export default class TutorialScreen extends Component<Props, State> {
                 <View style={styleSheet.innerContainer}>
                   {/** *********** Subtract 1 button ************** */}
                   <TouchableOpacity
-                    style={[styleSheet.button, {backgroundColor: 'red'}]}
+                    style={[styleSheet.button, { backgroundColor: 'red' }]}
                     onPress={this.onPressSubtract}>
                     <Text style={styleSheet.buttonText}>{'Subtract 1'}</Text>
                   </TouchableOpacity>
                   {/** ************* Add 1 button ***************** */}
                   <TouchableOpacity
-                    style={[styleSheet.button, {backgroundColor: 'green'}]}
+                    style={[styleSheet.button, { backgroundColor: 'green' }]}
                     onPress={this.onPressAdd}>
                     <Text style={styleSheet.buttonText}>{'Add 1'}</Text>
                   </TouchableOpacity>
@@ -232,9 +232,9 @@ export default class TutorialScreen extends Component<Props, State> {
                 <View style={styleSheet.innerContainer}>
                   {/** *********** Change Color button ************ */}
                   <TouchableOpacity
-                    style={[styleSheet.button, {backgroundColor: 'orange'}]}
+                    style={[styleSheet.button, { backgroundColor: 'orange' }]}
                     onPress={this.onPressColor}>
-                    <Text style={[styleSheet.buttonText, {color}]}>
+                    <Text style={[styleSheet.buttonText, { color }]}>
                       {'Change Color'}
                     </Text>
                   </TouchableOpacity>
@@ -300,33 +300,33 @@ export default class TutorialScreen extends Component<Props, State> {
 const styleSheet = StyleSheet.create({
   safeAreaContainer: {
     backgroundColor: 'plum',
-    flex: 1,
+    flex: 1
   },
   scrollViewContainer: {
-    backgroundColor: 'purple',
+    backgroundColor: 'purple'
   },
   scrollViewContentContainer: {
-    backgroundColor: 'orange',
+    backgroundColor: 'orange'
   },
   mainContainer: {
     alignItems: 'center',
     backgroundColor: 'pink',
     borderColor: 'red',
     marginBottom: 20,
-    flex: 1,
+    flex: 1
   },
   innerContainer: {
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    width: '100%',
+    width: '100%'
   },
   titleText: {
     textAlign: 'center',
     color: 'black',
     fontSize: 40,
     justifyContent: 'center',
-    marginVertical: 30,
+    marginVertical: 30
   },
   button: {
     alignItems: 'center',
@@ -342,21 +342,21 @@ const styleSheet = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: {
       height: 2,
-      width: 0,
+      width: 0
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    width: '45%',
+    width: '45%'
   },
   buttonText: {
     color: '#FFF',
     fontSize: 18,
-    textAlign: 'center',
+    textAlign: 'center'
   },
   mainText: {
     color: 'black',
     fontSize: 20,
-    fontWeight: 'bold',
-  },
+    fontWeight: 'bold'
+  }
 }); // End of styles
 // End of file

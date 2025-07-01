@@ -14,14 +14,15 @@ const HALF_FACTOR = 0.5;
 const DEFAULT_ROOT_VALUE = 16;
 
 // Determine and set the short and long dimensions (Portrait & Landscape)
-const { height, width, fontScale } = Dimensions.get( 'window' );
-const [ shortDimension, longDimension ] = width < height ? [ width, height ] : [ height, width ];
+const { height, width, fontScale } = Dimensions.get('window');
+const [shortDimension, longDimension] =
+  width < height ? [width, height] : [height, width];
 
 // Set the window size
-export const window = Object.freeze( {
-    shortDimension,
-    longDimension
-} );
+export const window = Object.freeze({
+  shortDimension,
+  longDimension
+});
 
 // ===================================================================== //
 // =================== <<<<< REM Like Scaling >>>>> ==================== //
@@ -36,8 +37,10 @@ export const window = Object.freeze( {
  * @param useFontScale
  * @param value
  */
-export const getRootValue = ( useFontScale?: boolean, value: number = DEFAULT_ROOT_VALUE ) =>
-    useFontScale ? value * fontScale : value;
+export const getRootValue = (
+  useFontScale?: boolean,
+  value: number = DEFAULT_ROOT_VALUE
+) => (useFontScale ? value * fontScale : value);
 export const REM: number = getRootValue();
 
 // ===================================================================== //
@@ -64,13 +67,15 @@ const GUIDELINE_BASE_HEIGHT = 852;
  * Horizontal Scale
  * @param size
  */
-export const horizontalScale = ( size: number ) => (shortDimension / GUIDELINE_BASE_WIDTH) * size;
+export const horizontalScale = (size: number) =>
+  (shortDimension / GUIDELINE_BASE_WIDTH) * size;
 
 /**
  * Vertical Scale
  * @param size
  */
-export const verticalScale = ( size: number ) => (longDimension / GUIDELINE_BASE_HEIGHT) * size;
+export const verticalScale = (size: number) =>
+  (longDimension / GUIDELINE_BASE_HEIGHT) * size;
 
 /**
  * Horizontal Moderate Scale
@@ -78,8 +83,10 @@ export const verticalScale = ( size: number ) => (longDimension / GUIDELINE_BASE
  * @param size
  * @param factor
  */
-export const horizontalModerateScale = ( size: number, factor: number = HALF_FACTOR ) =>
-    size + (horizontalScale( size ) - size) * factor;
+export const horizontalModerateScale = (
+  size: number,
+  factor: number = HALF_FACTOR
+) => size + (horizontalScale(size) - size) * factor;
 
 /**
  * Vertical Moderate Scale
@@ -87,8 +94,10 @@ export const horizontalModerateScale = ( size: number, factor: number = HALF_FAC
  * @param size
  * @param factor
  */
-export const verticalModerateScale = ( size: number, factor: number = HALF_FACTOR ) =>
-    size + (verticalScale( size ) - size) * factor;
+export const verticalModerateScale = (
+  size: number,
+  factor: number = HALF_FACTOR
+) => size + (verticalScale(size) - size) * factor;
 
 // ===================================================================== //
 // ======================= <<<<< Aspect Ratio  >>>>> =================== //
@@ -99,13 +108,13 @@ export const verticalModerateScale = ( size: number, factor: number = HALF_FACTO
  * @param sourceWidth
  * @param aspectRatio
  */
-export const getHeightFromWidth = ( sourceWidth: number, aspectRatio: number ) =>
-    sourceWidth / aspectRatio; // Returns Height
+export const getHeightFromWidth = (sourceWidth: number, aspectRatio: number) =>
+  sourceWidth / aspectRatio; // Returns Height
 
 /**
  * Get Width from Height
  * @param sourceHeight
  * @param aspectRatio
  */
-export const getWidthFromHeight = ( sourceHeight: number, aspectRatio: number ) =>
-    sourceHeight * aspectRatio; // Returns Width
+export const getWidthFromHeight = (sourceHeight: number, aspectRatio: number) =>
+  sourceHeight * aspectRatio; // Returns Width
