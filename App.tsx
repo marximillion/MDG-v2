@@ -1,139 +1,70 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
+ * Copyright (c) MDG 2025.
  */
 
+/**
+ * Imports
+ */
+import {Component, ReactNode} from 'react';
+import {NavigableAppContainer} from './app/navigation/NavigableAppContainer';
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {StatusBar} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
+/**
+ * Props
+ */
+interface Props {}
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+/**
+ * State
+ */
+interface State {}
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  /*
-   * To keep the template simple and small we're adding padding to prevent view
-   * from rendering under the System UI.
-   * For bigger apps the recommendation is to use `react-native-safe-area-context`:
-   * https://github.com/AppAndFlow/react-native-safe-area-context
-   *
-   * You can read more about it here:
-   * https://github.com/react-native-community/discussions-and-proposals/discussions/827
+/**
+ * App Screen
+ */
+export default class App extends Component<Props, State> {
+  /**
+   * Constructor
+   * @param props
    */
-  const safePadding = '5%';
+  constructor(props: Props) {
+    super(props);
 
-  return (
-    <View style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView style={backgroundStyle}>
-        <View style={{paddingRight: safePadding}}>
-          <Header />
-        </View>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            paddingHorizontal: safePadding,
-            paddingBottom: safePadding,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.primary}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-            icon
-          </Section>
-          <FontAwesome6 name="comments" size={30} color={"#900"} />
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </View>
-  );
-}
+    console.log('Constructor::Firing');
+  } // End of constructor()
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  primary: {
-    fontFamily: 'HappySwirly'
-  },
-  icon: {
-    color: 'red',
-  }
-});
+  /**
+   * on Mount
+   */
+  public componentDidMount() {
+    console.log('On Mount::Firing');
+  } // End of componentDidMount()
 
-export default App;
+  /**
+   * on UnMount
+   */
+  public componentWillUnmount() {
+    console.log('Un Mount::Firing');
+  } // End of componentWillUnmount()
+
+  // ===================================================================== //
+  // ==================== <<<<< Render Methods >>>>> ===================== //
+  // ===================================================================== //
+
+  /**
+   * Render: Main
+   * @returns ReactNode
+   */
+  public render(): ReactNode {
+    return (
+      <>
+        <StatusBar
+          barStyle={'dark-content'}
+          backgroundColor={'black'}></StatusBar>
+        <NavigableAppContainer />
+      </>
+    );
+  } // End of render()
+} // End of class()
+// End of file
