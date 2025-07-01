@@ -6,7 +6,7 @@
  * Imports
  */
 import { HomeProps } from '../screens/HomeScreen';
-// import { MovieDetailsProps } from "../screens/movie/MovieDetailsScreen";
+import { MovieDetailsProps } from '../screens/movie/MovieDetailsScreen';
 // import { ProfileProps } from "../screens/practice/ProfileScreen";
 import { SimpleWebviewProps } from '../screens/SimpleWebViewScreen';
 import { TutorialProps } from '../screens/practice/TutorialScreen';
@@ -19,7 +19,7 @@ export type StackParamList = {
   Home: HomeProps;
   Info: undefined;
   Movie: undefined;
-  // MovieDetails: MovieDetailsProps;
+  MovieDetails: MovieDetailsProps;
   Practice: undefined;
   // Profile: ProfileProps;
   SimpleWebView: SimpleWebviewProps;
