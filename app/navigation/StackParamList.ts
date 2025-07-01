@@ -7,7 +7,7 @@
  */
 import { HomeProps } from '../screens/HomeScreen';
 import { MovieDetailsProps } from '../screens/movie/MovieDetailsScreen';
-// import { ProfileProps } from "../screens/practice/ProfileScreen";
+import { ProfileProps } from '../screens/practice/ProfileScreen';
 import { SimpleWebviewProps } from '../screens/SimpleWebViewScreen';
 import { TutorialProps } from '../screens/practice/TutorialScreen';
 
@@ -21,7 +21,7 @@ export type StackParamList = {
   Movie: undefined;
   MovieDetails: MovieDetailsProps;
   Practice: undefined;
-  // Profile: ProfileProps;
+  Profile: ProfileProps;
   SimpleWebView: SimpleWebviewProps;
   Tutorial: TutorialProps;
 }; // End of type StackParamList
