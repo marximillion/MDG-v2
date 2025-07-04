@@ -2,10 +2,16 @@
  * Copyright (c) MDG 2025.
  */
 
+import CarScreen from '../screens/car/CarScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
+import InfoScreen from '../screens/practice/InfoScreen';
+import MovieScreen from '../screens/movie/MovieScreen';
 import { NavigationContainer } from '@react-navigation/native';
+import PracticeScreen from '../screens/practice/PracticeScreen';
+import ProfileScreen from '../screens/practice/ProfileScreen';
+import SimpleWebViewScreen from '../screens/SimpleWebViewScreen';
 import { StackParamList } from './StackParamList';
 import TutorialScreen from '../screens/practice/TutorialScreen';
 
@@ -41,18 +47,20 @@ export function NavigableAppContainer() {
           // initialParams={{colorScheme}}
           options={{ headerShown: false }}
         />
-        {/* <Stack.Screen name={'Info'} component={InfoScreen} />
-              <Stack.Screen name={'Profile'} component={ProfileScreen} />
-              <Stack.Screen
-                  name={'Tutorial'} // route name of this screen! = {"label for the type defined in StackParamList.ts (e.g. "Tutorial(name): TutorialProps(type)"}
-                  component={TutorialScreen} // component to render 'name' specified on the line above
-                  initialParams={{details: {firstName: 'Test', lastName: 'User', age: 35}}}
-                  options={{headerShown: false}} // additional options e.g. remove header
-              />
-              <Stack.Screen name={'Car'} component={CarScreen} />
-              <Stack.Screen name={'Practice'} component={PracticeScreen} />
-              <Stack.Screen name={'Movie'} component={MovieScreen} />
-              <Stack.Screen name={'SimpleWebView'} component={SimpleWebViewScreen} /> */}
+        <Stack.Screen name={'Info'} component={InfoScreen} />
+        <Stack.Screen name={'Profile'} component={ProfileScreen} />
+        <Stack.Screen
+          name={'Tutorial'} // route name of this screen! = {"label for the type defined in StackParamList.ts (e.g. "Tutorial(name): TutorialProps(type)"}
+          component={TutorialScreen} // component to render 'name' specified on the line above
+          initialParams={{
+            details: { firstName: 'Test', lastName: 'User', age: 35 }
+          }}
+          options={{ headerShown: false }} // additional options e.g. remove header
+        />
+        <Stack.Screen name={'Car'} component={CarScreen} />
+        <Stack.Screen name={'Practice'} component={PracticeScreen} />
+        <Stack.Screen name={'Movie'} component={MovieScreen} />
+        <Stack.Screen name={'SimpleWebView'} component={SimpleWebViewScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -81,8 +89,8 @@ function TabNavigator(): React.JSX.Element {
       // tabBar={renderTabBar}
     >
       <Tab.Screen name={'Tutorial'} component={TutorialScreen} />
-      {/* <Tab.Screen name={'Car'} component={CarScreen} /> */}
-      {/* <Tab.Screen name={'Info'} component={InfoScreen} /> */}
+      <Tab.Screen name={'Car'} component={CarScreen} />
+      <Tab.Screen name={'Info'} component={InfoScreen} />
     </Tab.Navigator>
   );
 } // End of TabNavigator

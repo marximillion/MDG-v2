@@ -3,7 +3,7 @@
  */
 
 import { APIPayload } from '../../APIPayload';
-import Error from '../model/Error';
+import { CustomError as Error } from '../model/Error';
 import Movie from '../model/Movie';
 
 /**

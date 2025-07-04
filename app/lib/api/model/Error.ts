@@ -7,7 +7,7 @@ import populateObject from '../../common/Utility';
 /**
  * Default class for handling errors
  */
-export default class Error {
+export class CustomError{
   /**
    * Member Variables
    */
