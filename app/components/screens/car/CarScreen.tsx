@@ -92,18 +92,19 @@ export default class CarScreen extends Component<Props, State> {
   private renderCars = ({ item }: ListRenderItemInfo<string>) => {
     let carImage;
     switch (item) {
+      // TODO: Get the missing assets
       case cars.CSX:
-        carImage = images.csx;
-        break;
+        // carImage = images.csx;
+        // break;
       case cars.CSX_TYPE_S:
-        carImage = images.csx_type_s;
-        break;
+        // carImage = images.csx_type_s;
+        // break;
       case cars.CRV:
-        carImage = images.crv;
-        break;
+        // carImage = images.crv;
+        // break;
       case cars.ODYSSEY:
-        carImage = images.odyssey;
-        break;
+        // carImage = images.odyssey;
+        // break;
       default:
         carImage = images.no_image;
     }
@@ -114,11 +115,13 @@ export default class CarScreen extends Component<Props, State> {
         style={[styles.carsBtn]}
         // TODO: Create CarDetails Screen
         // onPress={() => this.props.navigation.navigate('CarDetails', {selectedCar: item})}
-        onPress={() => navigation.navigate('Home', {})}>
+        // onPress={() => navigation.navigate('CarDetails', {})}
+        onPress={() => {}}
+      >
         <ImageBackground
           style={styles.carImage}
           source={carImage}
-          resizeMode={'cover'}
+          resizeMode={'contain'}
         />
         <Text style={GlobalStyles.standardText}>{item}</Text>
       </TouchableOpacity>
