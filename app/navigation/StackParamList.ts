@@ -5,11 +5,11 @@
 /**
  * Imports
  */
-import { HomeProps } from '../screens/HomeScreen';
-import { MovieDetailsProps } from '../screens/movie/MovieDetailsScreen';
-import { ProfileProps } from '../screens/practice/ProfileScreen';
-import { SimpleWebviewProps } from '../screens/SimpleWebViewScreen';
-import { TutorialProps } from '../screens/practice/TutorialScreen';
+import { HomeProps } from '../components/screens/HomeScreen';
+import { MovieDetailsProps } from '../components/screens/movie/MovieDetailsScreen';
+import { ProfileProps } from '../components/screens/practice/ProfileScreen';
+import { SimpleWebviewProps } from '../components/screens/SimpleWebViewScreen';
+import { TutorialProps } from '../components/screens/practice/TutorialScreen';
 
 /**
  * Used to assign which types (Props) the route will have access to?

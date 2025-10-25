@@ -15,13 +15,13 @@ import {
   View
 } from 'react-native';
 import { Component, ReactNode } from 'react';
-import { GlobalStyles } from '../../styles/GlobalStyles';
-import Movie from '../../lib/api/model/Movie';
-import MovieAgent from '../../lib/api/agent/MovieAgent';
+import { GlobalStyles } from '../../../styles/GlobalStyles';
+import Movie from '../../../lib/api/model/Movie';
+import MovieAgent from '../../../lib/api/agent/MovieAgent';
 import { RouteProp } from '@react-navigation/native';
-import SearchResults from '../../lib/api/model/SearchResults';
+import SearchResults from '../../../lib/api/model/SearchResults';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { StackParamList } from '../../navigation/StackParamList';
+import { StackParamList } from '../../../navigation/StackParamList';
 
 /**
  * Props

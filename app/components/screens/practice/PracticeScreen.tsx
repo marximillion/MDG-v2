@@ -5,14 +5,14 @@ import { Component, ReactNode } from 'react';
 import {
   horizontalModerateScale,
   verticalModerateScale
-} from '../../styles/scale';
+} from '../../../styles/scale';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import { images } from '../../assets/images';
+import { images } from '../../../assets/images';
 import { RouteProp } from '@react-navigation/native';
-import ScreenContainer from '../components/ScreenContainer';
-import { space } from '../../styles/size';
+import ScreenContainer from '../../common/ScreenContainer';
+import { space } from '../../../styles/size';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { StackParamList } from '../../navigation/StackParamList';
+import { StackParamList } from '../../../navigation/StackParamList';
 
 /**
  * Props

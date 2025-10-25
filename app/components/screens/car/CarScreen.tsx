@@ -6,8 +6,8 @@
  * Imports
  */
 import { Component, ReactNode } from 'react';
-import { GlobalStyles } from '../../styles/GlobalStyles';
-import { images } from '../../assets/images';
+import { GlobalStyles } from '../../../styles/GlobalStyles';
+import { images } from '../../../assets/images';
 import { RouteProp } from '@react-navigation/native';
 import {
   SafeAreaView,
@@ -20,7 +20,7 @@ import {
   ImageBackground
 } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { StackParamList } from '../../navigation/StackParamList';
+import { StackParamList } from '../../../navigation/StackParamList';
 
 enum cars {
   CSX = 'Grey Eagle',

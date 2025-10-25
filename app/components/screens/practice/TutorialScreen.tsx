@@ -22,9 +22,9 @@ import { Component, ReactNode } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
-import { StackParamList } from '../../navigation/StackParamList';
-import Button from '../components/Button';
-import { images } from '../../assets/images';
+import { StackParamList } from '../../../navigation/StackParamList';
+import Button from '../../common/Button';
+import { images } from '../../../assets/images';
 
 /**
  * Props

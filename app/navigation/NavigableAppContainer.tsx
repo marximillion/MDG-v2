@@ -2,18 +2,21 @@
  * Copyright (c) MDG 2025.
  */
 
-import CarScreen from '../screens/car/CarScreen';
+/**
+ * Imports
+ */
+import CarScreen from '../components/screens/car/CarScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from '../screens/HomeScreen';
-import InfoScreen from '../screens/practice/InfoScreen';
-import MovieScreen from '../screens/movie/MovieScreen';
+import HomeScreen from '../components/screens/HomeScreen';
+import InfoScreen from '../components/screens/practice/InfoScreen';
+import MovieScreen from '../components/screens/movie/MovieScreen';
 import { NavigationContainer } from '@react-navigation/native';
-import PracticeScreen from '../screens/practice/PracticeScreen';
-import ProfileScreen from '../screens/practice/ProfileScreen';
-import SimpleWebViewScreen from '../screens/SimpleWebViewScreen';
+import PracticeScreen from '../components/screens/practice/PracticeScreen';
+import ProfileScreen from '../components/screens/practice/ProfileScreen';
+import SimpleWebViewScreen from '../components/screens/SimpleWebViewScreen';
 import { StackParamList } from './StackParamList';
-import TutorialScreen from '../screens/practice/TutorialScreen';
+import TutorialScreen from '../components/screens/practice/TutorialScreen';
 
 /**
  * @file NavigableAppContainer.tsx
@@ -93,4 +96,4 @@ function TabNavigator(): React.JSX.Element {
       <Tab.Screen name={'Info'} component={InfoScreen} />
     </Tab.Navigator>
   );
-} // End of TabNavigator
+} // End of TabNavigator()

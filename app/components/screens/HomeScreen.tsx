@@ -5,12 +5,12 @@
 /**
  * Imports
  */
-import Button from './components/Button';
+import Button from '../common/Button';
 import { Component, ReactNode } from 'react';
 import { RouteProp } from '@react-navigation/native';
-import ScreenContainer from './components/ScreenContainer';
+import ScreenContainer from '../common/ScreenContainer';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { StackParamList } from '../navigation/StackParamList';
+import { StackParamList } from '../../navigation/StackParamList';
 
 /**
  * Props

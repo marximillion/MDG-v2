@@ -13,13 +13,13 @@ import {
   TextInput,
   View
 } from 'react-native';
-import Button from '../components/Button';
-import { GlobalStyles } from '../../styles/GlobalStyles';
+import Button from '../../common/Button';
+import { GlobalStyles } from '../../../styles/GlobalStyles';
 import React, { Component, ReactNode } from 'react';
 import { RouteProp } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { StackParamList } from '../../navigation/StackParamList';
+import { StackParamList } from '../../../navigation/StackParamList';
 
 /**
  * Props

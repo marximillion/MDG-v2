@@ -5,7 +5,7 @@
 import { Component, ReactNode } from 'react';
 import { Platform, SafeAreaView, StyleSheet, Text } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { StackParamList } from '../../navigation/StackParamList';
+import { StackParamList } from '../../../navigation/StackParamList';
 import { RouteProp } from '@react-navigation/native';
 
 /**
