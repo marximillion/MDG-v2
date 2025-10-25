@@ -31,21 +31,21 @@ export default class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    console.log('Constructor::Firing');
+    console.log('App::Constructor');
   } // End of constructor()
 
   /**
    * on Mount
    */
   public componentDidMount() {
-    console.log('On Mount::Firing');
+    console.log('App::componentDidMount');
   } // End of componentDidMount()
 
   /**
    * on UnMount
    */
   public componentWillUnmount() {
-    console.log('Un Mount::Firing');
+    console.log('App::componentWillUnmount');
   } // End of componentWillUnmount()
 
   // ===================================================================== //

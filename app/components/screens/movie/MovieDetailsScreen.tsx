@@ -38,7 +38,7 @@ export default class MovieDetailsScreen extends Component<Props, State> {
    * @param props
    */
   constructor(props: Props) {
-    console.log('MovieDetailsScreen::Constructor');
+    console.log('MovieDetailsScreen::constructor');
 
     super(props);
     this.state = {
@@ -50,14 +50,14 @@ export default class MovieDetailsScreen extends Component<Props, State> {
    * on Mount
    */
   public componentDidMount(): void {
-    console.log('MovieDetailsScreen::OnMount');
+    console.log('MovieDetailsScreen::componentDidMount');
   } // End of componentDidMount()
 
   /**
    * on UnMount
    */
   public componentWillUnmount(): void {
-    console.log('MovieDetailsScreen::UnMount');
+    console.log('MovieDetailsScreen::componentWillUnmount');
   } // End of componentWillMount()
 
   // ======================================================================= //
@@ -72,7 +72,7 @@ export default class MovieDetailsScreen extends Component<Props, State> {
    * Render: Movie Details Screen
    */
   public render(): ReactNode {
-    console.log('MovieDetailsScreen::Render');
+    console.log('MovieDetailsScreen::render');
 
     return (
       <SafeAreaView style={styles.safeAreaContainer}>

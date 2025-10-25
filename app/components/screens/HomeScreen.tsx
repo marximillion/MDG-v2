@@ -36,10 +36,26 @@ export default class HomeScreen extends Component<Props, State> {
    * @param props
    */
   constructor(props: Props) {
+    console.log('HomeScreen::constructor');
+
     super(props);
 
     this.state = {};
   } // End of constructor()
+
+  /**
+   * on Mount
+   */
+  public componentDidMount(): void {
+    console.log('HomeScreen::componentDidMount');
+  } // End of componentDidMount()
+
+  /**
+   * on UnMount
+   */
+  public componentWillUnmount(): void {
+    console.log('HomeScreen::componentWillUnmount');
+  } // End of componentWillMount()
 
   // ===================================================================== //
   // ================== <<<<< Navigation Methods >>>>> =================== //
@@ -50,6 +66,7 @@ export default class HomeScreen extends Component<Props, State> {
    * - Navigate to info screen
    */
   private navigateInfo = () => {
+    console.log('HomeScreen::navigateInfo');
     const { navigation } = this.props;
     navigation.navigate('Info');
   }; // End of navigateInfo()
@@ -59,6 +76,7 @@ export default class HomeScreen extends Component<Props, State> {
    * - Navigate to practice screen
    */
   private navigatePractice = () => {
+    console.log('HomeScreen::navigatePractice');
     const { navigation } = this.props;
     navigation.navigate('Practice');
   }; // End of navigatePractice()
@@ -68,6 +86,7 @@ export default class HomeScreen extends Component<Props, State> {
    * - Navigate to movie screen
    */
   private navigateMovie = () => {
+    console.log('HomeScreen::navigateMovie');
     const { navigation } = this.props;
     navigation.navigate('Movie');
   }; // End of navigateMovie()
@@ -82,6 +101,7 @@ export default class HomeScreen extends Component<Props, State> {
    * @returns ReactNode
    */
   public render(): ReactNode {
+    console.log('HomeScreen::render');
     return (
       <ScreenContainer withImageBackground={true}>
         <Button

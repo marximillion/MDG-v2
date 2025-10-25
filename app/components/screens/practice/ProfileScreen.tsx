@@ -41,7 +41,7 @@ export default class ProfileScreen extends Component<Props, State> {
    * @param props
    */
   constructor(props: Props) {
-    console.log('ProfileScreen::Constructor');
+    console.log('ProfileScreen::constructor');
 
     super(props);
 
@@ -53,14 +53,14 @@ export default class ProfileScreen extends Component<Props, State> {
    * on Mount
    */
   public componentDidMount(): void {
-    console.log('ProfileScreen::OnMount');
+    console.log('ProfileScreen::componentDidMount');
   } // End of componentDidMount()
 
   /**
    * on UnMount
    */
   public componentWillUnmount(): void {
-    console.log('ProfileScreen::UnMount');
+    console.log('ProfileScreen::componentWillUnmount');
   } // End of componentWillMount()
 
   // ===================================================================== //
@@ -73,6 +73,7 @@ export default class ProfileScreen extends Component<Props, State> {
    * TODO: WIP
    */
   private navigateTutorial = () => {
+    console.log('ProfileScreen::navigateTutorial');
     const { details } = this.props.route.params;
     this.props.navigation.navigate('Tutorial', { details });
   }; // End of navigateTutorial()
@@ -82,7 +83,7 @@ export default class ProfileScreen extends Component<Props, State> {
   // ===================================================================== //
 
   public render(): ReactNode {
-    console.log('ProfileScreen::Render');
+    console.log('ProfileScreen::render');
     const { details } = this.props.route.params;
     return (
       <>

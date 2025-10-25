@@ -48,7 +48,7 @@ export default class SimpleWebViewScreen extends Component<Props, State> {
    * @param props
    */
   constructor(props: Props) {
-    console.log('SipleWebView::Constructor');
+    console.log('SipleWebViewScreen::constructor');
 
     super(props);
 
@@ -64,14 +64,14 @@ export default class SimpleWebViewScreen extends Component<Props, State> {
    * On Mount
    */
   public componentDidMount(): void {
-    console.log('SimpleWebView::OnMount');
+    console.log('SipleWebViewScreen::componentDidMount');
   } // End of componentDidMount()
 
   /**
    * Un Mount
    */
   public componentWillUnmount(): void {
-    console.log('SimpleWebView:UnMount');
+    console.log('SipleWebViewScreen::componentWillUnmount');
   } // End of componentWillUnmount()
 
   // ======================================================================= //
@@ -85,9 +85,10 @@ export default class SimpleWebViewScreen extends Component<Props, State> {
    * @param {WebViewNavigation} event
    */
   private onNavigationStateChange = (event: WebViewNavigation): void => {
-    if (!event.loading) {
-      // this.setState( { busy: false } )
-    }
+    console.log('SipleWebViewScreen::onNavigationStateChange');
+    // if (!event.loading) {
+    // this.setState( { busy: false } )
+    // }
   }; // End of onNavigationStateChange
 
   // ===================================================================== //
@@ -99,6 +100,7 @@ export default class SimpleWebViewScreen extends Component<Props, State> {
    * - Basic back button since no data is changed on this child screen that is used by the parent screen
    */
   private navigateBack = () => {
+    console.log('SipleWebViewScreen::navigateBack');
     this.props.navigation?.goBack();
   }; // End of navigateBack()
 
@@ -107,6 +109,7 @@ export default class SimpleWebViewScreen extends Component<Props, State> {
   // ======================================================================= //
 
   public render(): ReactNode {
+    console.log('SipleWebViewScreen::render');
     const { url } = this.props.route.params;
     return (
       <>

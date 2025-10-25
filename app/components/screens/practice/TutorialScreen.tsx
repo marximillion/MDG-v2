@@ -47,7 +47,7 @@ export interface TutorialProps {
  */
 interface State {
   numOfPress: number | null;
-  busy: boolean; // for activity indicator - TODO: Implement activity indicator
+  busy: boolean;
   color: string;
 }
 
@@ -60,6 +60,7 @@ export default class TutorialScreen extends Component<Props, State> {
    * @param props
    */
   constructor(props: Props) {
+    console.log('TutorialScreen::constructor');
     super(props);
 
     // initialize state
@@ -69,21 +70,20 @@ export default class TutorialScreen extends Component<Props, State> {
       color: '#FFC0CB'
     };
 
-    console.log('TutorialScreen::Constructor::Firing');
   } // End of constructor()
 
   /**
    * on Mount
    */
   public componentDidMount() {
-    console.log('TutorialScreen::On Mount::Firing');
+    console.log('TutorialScreen::componentDidMount');
   } // End of componentDidMount()
 
   /**
    * on UnMount
    */
   public componentWillUnmount() {
-    console.log('TutorialScreen::Un Mount::Firing');
+    console.log('TutorialScreen::componentWillUnmount');
   } // End of componentWillUnmount()
 
   // ===================================================================== //
@@ -95,6 +95,7 @@ export default class TutorialScreen extends Component<Props, State> {
    * Reset App Screen Background Color and number of press counter
    */
   private onPressReset = () => {
+    console.log('TutorialScreen::onPressReset');
     const { age } = this.props.route.params.details;
 
     // reset ALL states
@@ -108,8 +109,10 @@ export default class TutorialScreen extends Component<Props, State> {
    * Change App Screen Background Color to a random color
    */
   private onPressColor = () => {
+    console.log('TutorialScreen::onPressColor');
+
     // generate a random color
-    const randColor = () => {
+    const randomColor = () => {
       return `#${Math.floor(Math.random() * 16777215)
         .toString(16)
         .padStart(6, '0')
@@ -117,7 +120,7 @@ export default class TutorialScreen extends Component<Props, State> {
     };
 
     // update color state
-    this.setState({ color: randColor() });
+    this.setState({ color: randomColor() });
   }; // End of onPressColor()
 
   /**
@@ -125,6 +128,8 @@ export default class TutorialScreen extends Component<Props, State> {
    * Increase press value displayed on screen by 1
    */
   private onPressAdd = () => {
+    console.log('TutorialScreen::onPressAdd');
+
     // extract numOfPress variable from state
     const { numOfPress } = this.state;
 
@@ -141,6 +146,8 @@ export default class TutorialScreen extends Component<Props, State> {
    * Decrease press value displayed on screen by 1
    */
   private onPressSubtract = () => {
+    console.log('TutorialScreen::onPressSubtract');
+
     // extract numOfPress variable from state
     const { numOfPress } = this.state;
 
@@ -161,6 +168,7 @@ export default class TutorialScreen extends Component<Props, State> {
    * - Navigate to car screen
    */
   private navigateCar = () => {
+    console.log('TutorialScreen::navigateCar');
     this.props.navigation.navigate('Car');
   }; // End of navigateCar()
 
@@ -169,6 +177,7 @@ export default class TutorialScreen extends Component<Props, State> {
    * - Navigate to info screen
    */
   private navigateInfo = () => {
+    console.log('TutorialScreen::navigateInfo');
     this.props.navigation.navigate('Info');
   }; // End of navigateInfo()
 
@@ -181,6 +190,8 @@ export default class TutorialScreen extends Component<Props, State> {
    * @returns ReactNode
    */
   public render(): ReactNode {
+    console.log('TutorialScreen::render');
+
     // extract variables from state
     const { numOfPress, color } = this.state;
 

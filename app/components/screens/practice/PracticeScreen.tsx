@@ -39,6 +39,8 @@ export default class PracticeScreen extends Component<Props, State> {
    * @param props
    */
   constructor(props: Props) {
+    console.log('PracticeScreen::constructor');
+
     super(props);
 
     // initialize state
@@ -58,6 +60,7 @@ export default class PracticeScreen extends Component<Props, State> {
    * @returns ReactNode
    */
   public render(): ReactNode {
+    console.log('PracticeScreen::render');
     return (
       <ScreenContainer withImageBackground={true}>
         <View style={styleSheet.mainContainer}>

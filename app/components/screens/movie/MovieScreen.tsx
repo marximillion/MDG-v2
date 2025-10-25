@@ -53,7 +53,7 @@ export default class MovieScreen extends Component<Props, State> {
    * @param props
    */
   constructor(props: Props) {
-    console.log('MovieScreen::Constructor');
+    console.log('MovieScreen::constructor');
 
     super(props);
 
@@ -72,14 +72,14 @@ export default class MovieScreen extends Component<Props, State> {
    * on Mount
    */
   public componentDidMount(): void {
-    console.log('MovieScreen::OnMount');
+    console.log('MovieScreen::componentDidMount');
   } // End of componentDidMount()
 
   /**
    * on UnMount
    */
   public componentWillUnmount(): void {
-    console.log('MovieScreen::UnMount');
+    console.log('MovieScreen::componentWillUnmount');
   } // End of componentWillMount()
 
   // ======================================================================= //
@@ -202,6 +202,8 @@ export default class MovieScreen extends Component<Props, State> {
    * - Navigation to webview
    */
   private navigateWebview = (title?: string) => {
+    console.log('MovieScreen::navigateWebview');
+
     const url = `https://www.google.ca/search?q=${title}`;
     this.props.navigation.navigate('SimpleWebView', { url });
   }; // End of navigateWebview()
@@ -214,7 +216,7 @@ export default class MovieScreen extends Component<Props, State> {
    * Render: Movie Screen
    */
   public render(): ReactNode {
-    console.log('MovieScreen::Render');
+    console.log('MovieScreen::render');
 
     // 1: Extract variables from state
     const { busy, movie, movieQuery, numberOfPages, page } = this.state;

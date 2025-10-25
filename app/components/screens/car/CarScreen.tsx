@@ -60,7 +60,7 @@ export default class CarScreen extends Component<Props, State> {
    * @param props
    */
   constructor(props: Props) {
-    console.log('CarScreen::Constructor');
+    console.log('CarScreen::constructor');
 
     super(props);
 
@@ -72,14 +72,14 @@ export default class CarScreen extends Component<Props, State> {
    * on Mount
    */
   public componentDidMount(): void {
-    console.log('CarScreen::OnMount');
+    console.log('CarScreen::componentDidMount');
   } // End of componentDidMount()
 
   /**
    * on UnMount
    */
   public componentWillUnmount(): void {
-    console.log('CarScreen::UnMount');
+    console.log('CarScreen::componentWillUnmount');
   } // End of componentWillMount()
 
   // ===================================================================== //
@@ -131,7 +131,7 @@ export default class CarScreen extends Component<Props, State> {
    * @returns ReactNode
    */
   public render(): ReactNode {
-    console.log('CarScreen::Render');
+    console.log('CarScreen::render');
 
     return (
       <SafeAreaView style={GlobalStyles.safeAreaContainer}>

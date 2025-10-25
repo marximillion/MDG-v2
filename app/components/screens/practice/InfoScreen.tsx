@@ -52,6 +52,7 @@ export default class InfoScreen extends Component<Props, State> {
    * @param props
    */
   constructor(props: Props) {
+    console.log('InfoScreen::constructor');
     super(props);
 
     // initialize state
@@ -67,6 +68,20 @@ export default class InfoScreen extends Component<Props, State> {
     };
   } // End of constructor()
 
+  /**
+   * on Mount
+   */
+  public componentDidMount(): void {
+    console.log('InfoScreen::componentDidMount');
+  } // End of componentDidMount()
+
+  /**
+   * on UnMount
+   */
+  public componentWillUnmount(): void {
+    console.log('InfoScreen::componentWillUnmount');
+  } // End of componentWillMount()
+
   // ===================================================================== //
   // ==================== <<<<< Action Methods >>>>> ===================== //
   // ===================================================================== //
@@ -76,6 +91,8 @@ export default class InfoScreen extends Component<Props, State> {
    * Toggle Status Bar from light to dark mode
    */
   private statusBarToggle = () => {
+    console.log('InfoScreen::statusBarToggle');
+
     this.setState((prevState) => ({
       enabled: !prevState.enabled,
       statusBarColoriOS:
@@ -94,6 +111,8 @@ export default class InfoScreen extends Component<Props, State> {
    * update the text displayed on text input box
    */
   private handleChangeText(value: string, identifier: string) {
+    console.log('InfoScreen::handleChangeText');
+
     // trims the value for leading, trailing whitespaces, and any non-letter character except for '
     const trimmedValue = value.trim().replace(/[^a-zA-Z\s']/g, '');
     // if length of string is greater than 20, it will get the characters for index 0 to 20
@@ -125,6 +144,7 @@ export default class InfoScreen extends Component<Props, State> {
    * update the text displayed on numeric input box
    */
   private handleChangeNumber(value: string) {
+    console.log('InfoScreen::handleChangeNumber');
     // Convert string value to number
     const intValue = parseInt(value);
 
@@ -158,6 +178,8 @@ export default class InfoScreen extends Component<Props, State> {
    * - Navigate to profile screen
    */
   private navigateProfile = () => {
+    console.log('InfoScreen::navigateProfile');
+
     const { navigation } = this.props;
     const { details } = this.state;
     const { firstName, lastName, age } = details;
@@ -173,6 +195,8 @@ export default class InfoScreen extends Component<Props, State> {
    * - Navigate to simple webview screen
    */
   private navigateSimpleWebView = (url: string) => {
+    console.log('InfoScreen::navigateSimpleWebView');
+
     const { navigation } = this.props;
     navigation.navigate('SimpleWebView', { url });
   }; // End of navigateSimpleWebView()
@@ -182,6 +206,7 @@ export default class InfoScreen extends Component<Props, State> {
    * - Navigate back to the previous screen
    */
   private navigateBack = () => {
+    console.log('InfoScreen::navigateBack');
     const { navigation } = this.props;
     navigation.goBack();
   }; // End of navigateBack()
@@ -196,6 +221,7 @@ export default class InfoScreen extends Component<Props, State> {
    * @returns ReactNode
    */
   public render(): ReactNode {
+    console.log('InfoScreen::render');
     const { enabled, statusBarColoriOS, statusBarColorAndroid, details } =
       this.state;
     return (
