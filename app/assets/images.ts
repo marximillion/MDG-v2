@@ -3,10 +3,10 @@ export const images = Object.freeze({
   background_image: require('./images/backgroundImage.jpeg'),
 
   // Car Images
-  // csx: require('./images/csx.png'),
-  // csx_type_s: require('./images/csx_type_s.png'),
-  // crv: require('./images/crv.png'),
-  // odyssey: require('./images/odyssey.png'),
+  csx: require('./images/cars/csx.jpg'),
+  csx_type_s: require('./images/cars/csx-type-s.png'),
+  crv: require('./images/cars/crv.jpg'),
+  odyssey: require('./images/cars/odyssey.png'),
 
   // Random Images
   clown: require('./images/clown.png'),

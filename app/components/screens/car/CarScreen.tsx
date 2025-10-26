@@ -94,17 +94,17 @@ export default class CarScreen extends Component<Props, State> {
     switch (item) {
       // TODO: Get the missing assets
       case cars.CSX:
-        // carImage = images.csx;
-        // break;
+        carImage = images.csx;
+        break;
       case cars.CSX_TYPE_S:
-        // carImage = images.csx_type_s;
-        // break;
+        carImage = images.csx_type_s;
+        break;
       case cars.CRV:
-        // carImage = images.crv;
-        // break;
+        carImage = images.crv;
+        break;
       case cars.ODYSSEY:
-        // carImage = images.odyssey;
-        // break;
+        carImage = images.odyssey;
+        break;
       default:
         carImage = images.no_image;
     }
