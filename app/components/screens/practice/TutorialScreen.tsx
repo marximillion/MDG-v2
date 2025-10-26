@@ -153,7 +153,7 @@ export default class TutorialScreen extends Component<Props, State> {
 
     if (numOfPress) {
       // update numOfPress state
-      this.setState({ numOfPress: numOfPress + 1 });
+      this.setState({ numOfPress: numOfPress - 1 });
     }
 
     this.setState({ busy: false });
