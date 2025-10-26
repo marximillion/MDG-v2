@@ -11,6 +11,7 @@ The project is being developed purely on Windows 11 OS for android devices. Futu
 Environment Versions
 
 - ReactNative 0.79.3
+- choco 2.5.1
 - node 25.0.0
 - npx/npm 11.6.2
 - Java 17.0.16
