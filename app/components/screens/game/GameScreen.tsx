@@ -2,19 +2,19 @@
  * Copyright (c) MJDG 2025.
  */
 
-import { StackNavigationProp } from "@react-navigation/stack";
-import { Component, ReactNode } from "react";
-import { Image, StyleSheet, Switch, Text, TouchableOpacity, View, Modal } from "react-native";
-import { StackParamList } from "../../../navigation/StackParamList";
-import ScreenContainer from "../../common/ScreenContainer";
-import { RouteProp } from "@react-navigation/native";
-import { images } from "../../../assets/images";
-import { GlobalStyles } from "../../../styles/GlobalStyles";
-import { FlatList, TextInput } from "react-native-gesture-handler";
 import Button from "../../common/Button";
+import { Component, ReactNode } from "react";
+import { FlatList, TextInput } from "react-native-gesture-handler";
+import { Image, StyleSheet, Switch, Text, TouchableOpacity, View, Modal } from "react-native";
+import { images } from "../../../assets/images";
 import miniGames from '../../../assets/data/mini-games.json';
 // import questions from '../../../assets/data/questions.json';
 import questions from '../../../assets/data/test-questions.json';
+import { RouteProp } from "@react-navigation/native";
+import ScreenContainer from "../../common/ScreenContainer";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { StackParamList } from "../../../navigation/StackParamList";
+import { GlobalStyles } from "../../../styles/GlobalStyles";
 
 
 /**
@@ -42,16 +42,16 @@ interface State {
     isFirstQuestion: boolean;
     isLastQuestion: boolean;
     isEnabled: boolean;
-    revealedAnswers: boolean[];
     modalVisible: boolean;
-    questionsModalVisible: boolean;
     points: {
         team1: number;
         team2: number;
     };
     pointsModalVisible: boolean;
-    selectedTeam: 'team1' | 'team2';
     pointsInput: string;
+    questionsModalVisible: boolean;
+    revealedAnswers: boolean[];
+    selectedTeam: 'team1' | 'team2';
 }
 
 class GameScreen extends Component<Props, State> {
@@ -82,6 +82,9 @@ class GameScreen extends Component<Props, State> {
         };
     } // End of constructor()
 
+    /**
+     * On Mount
+     */
     componentDidMount() {
         console.log('GameScreen::componentDidMount');
 
@@ -89,8 +92,21 @@ class GameScreen extends Component<Props, State> {
             this.setState({ busy: false });
             this.initializeRevealed();
         }, 0)
-    }
+    }// End of componentDidMount()
 
+    /**
+     * On UnMount
+     */
+    componentWillUnmount() {
+        console.log('GameScreen::componentWillUnmount');
+    }// End of componentWillUnmount()
+
+    /**
+     * On Update
+     * 
+     * @param prevProps {Props}
+     * @param prevState {State}
+     */
     componentDidUpdate(prevProps: Props, prevState: State) {
         console.log('GameScreen::componentDidUpdate');
 
@@ -102,26 +118,34 @@ class GameScreen extends Component<Props, State> {
                 isLastQuestion: currentQuestionIndex === questions.length - 1
             });
         }
-    }
+    }// End of componentDidUpdate()
 
-
-    /**
-     * Toggle Mini Games Modal
-     */
-    private toggleMiniGamesModal = () => {
-        this.setState((prevState) => ({
-            modalVisible: !prevState.modalVisible
-        }));
-    };
+    // ===================================================================== //
+    // ================== <<<<< Navigation Methods >>>>> =================== //
+    // ===================================================================== //
 
     /**
-     * Toggle Questions Modal
+     * Navigate to Home Screen
      */
-    private toggleQuestionsModal = () => {
-        this.setState((prevState) => ({
-            questionsModalVisible: !prevState.questionsModalVisible
-        }));
-    };
+    private navigateToHome = () => {
+        console.log('GameScreen::navigateToHome');
+        const { navigation } = this.props;
+        navigation.navigate('Home', {});
+    };// End of navigateToHome()
+
+    // ======================================================================= //    
+    // ===================== <<<<< Action Methods >>>>> ====================== //    
+    // ======================================================================= //
+
+    /**
+     * Initialize Revealed Answers
+     */
+    private initializeRevealed = () => {
+        console.log('GameScreen::initializeRevealed');
+
+        const currentQuestion = questions[this.state.currentQuestionIndex];
+        this.setState({ revealedAnswers: Array(currentQuestion.answers.length).fill(false) });
+    };// End of initializeRevealed()
 
     /**
      * Select Question
@@ -134,115 +158,7 @@ class GameScreen extends Component<Props, State> {
             isFirstQuestion: index === 0,
             isLastQuestion: index === questions.length - 1
         });
-    };
-
-    /**
-     * Add Points to Team
-     */
-    private addPoints = (team: 'team1' | 'team2', points: number) => {
-        this.setState((prevState) => ({
-            points: {
-                ...prevState.points,
-                [team]: prevState.points[team] + points
-            }
-        }));
-    };
-
-    /**
-     * Toggle Points Modal
-     */
-    private togglePointsModal = () => {
-        this.setState((prevState) => ({
-            pointsModalVisible: !prevState.pointsModalVisible,
-            pointsInput: ''
-        }));
-    };
-
-    /**
-     * Add Manual Points
-     */
-    private addManualPoints = () => {
-        const points = parseInt(this.state.pointsInput, 10);
-        if (!isNaN(points) && points > 0) {
-            this.addPoints(this.state.selectedTeam, points);
-            this.setState({
-                pointsInput: '',
-                pointsModalVisible: false
-            });
-        }
-    };
-
-    /**
-     * Navigate to Home Screen
-     */
-    private navigateToHome = () => {
-        console.log('GameScreen::navigateToHome');
-        const { navigation } = this.props;
-        navigation.navigate('Home', {});
-    };
-
-    // ======================================================================= //\n    // ===================== <<<<< Action Methods >>>>> ====================== //\n    // ======================================================================= //
-
-    /**
-     * Initialize Revealed Answers
-     */
-    private initializeRevealed = () => {
-        console.log('GameScreen::initializeRevealed');
-
-        const currentQuestion = questions[this.state.currentQuestionIndex];
-        this.setState({ revealedAnswers: Array(currentQuestion.answers.length).fill(false) });
-    };
-
-    /**
-     * Toggle Switch
-     */
-    private toggleSwitch = () => {
-        console.log('GameScreen::toggleSwitch');
-
-        this.setState((prevState) => ({
-            isEnabled: !prevState.isEnabled
-        }));
-    }; // End of toggleSwitch()
-
-    /**
-     * Toggle Strike
-     * 
-     * @param team 
-     * @param index 
-     */
-    private toggleStrike = (team: 'team1' | 'team2', index: number) => {
-        console.log('GameScreen::toggleStrike');
-
-        const newTeamAttempts = { ...this.state.attempts };
-        const teamArray = [...newTeamAttempts[team]]; // copy the correct team array
-        teamArray[index] = !teamArray[index]; // toggle the strike
-        newTeamAttempts[team] = teamArray;
-        this.setState({ attempts: newTeamAttempts });
-    };// End of toggleStrike()
-
-    /**
-     * Reset Attempts
-     */
-    private resetAttempts = (team: 'team1' | 'team2') => {
-        console.log('GameScreen::resetAttempts');
-
-        this.setState((prevState) => {
-            let newAttempts = { ...prevState.attempts };
-            newAttempts[team] = [false, false, false];
-            return { attempts: newAttempts };
-        });
-    };// End of resetAttempts()
-
-    /**
-     * Reset Answers
-     */
-    private resetAnswers = () => {
-        console.log('GameScreen::resetAnswers');
-
-        this.setState({
-            revealedAnswers: []
-        });
-    };// End of resetAnswers()
+    };// End of selectQuestion()
 
     /**
      * Next Question
@@ -275,7 +191,91 @@ class GameScreen extends Component<Props, State> {
     };// End of previousQuestion()
 
     /**
-     * Toggle Answer
+     * Add Points to Team
+     */
+    private addPoints = (team: 'team1' | 'team2', points: number) => {
+        this.setState((prevState) => ({
+            points: {
+                ...prevState.points,
+                [team]: prevState.points[team] + points
+            }
+        }));
+    };// End of addPoints()
+
+    /**
+     * Add Manual Points
+     */
+    private addManualPoints = () => {
+        const points = parseInt(this.state.pointsInput, 10);
+        if (!isNaN(points) && points > 0) {
+            this.addPoints(this.state.selectedTeam, points);
+            this.setState({
+                pointsInput: '',
+                pointsModalVisible: false
+            });
+        }
+    };// End of addManualPoints()
+
+    // ===================== <<<<< Toggle Methods >>>>> ====================== //    
+
+    /**
+     * Toggle Points Modal
+     */
+    private togglePointsModal = () => {
+        this.setState((prevState) => ({
+            pointsModalVisible: !prevState.pointsModalVisible,
+            pointsInput: ''
+        }));
+    };// End of togglePointsModal()
+
+    /**
+     * Toggle Mini Games Modal
+     */
+    private toggleMiniGamesModal = () => {
+        this.setState((prevState) => ({
+            modalVisible: !prevState.modalVisible
+        }));
+    };// End of toggleMiniGamesModal()
+
+    /**
+     * Toggle Questions Modal
+     */
+    private toggleQuestionsModal = () => {
+        this.setState((prevState) => ({
+            questionsModalVisible: !prevState.questionsModalVisible
+        }));
+    };// End of toggleQuestionsModal()
+
+    /**
+     * Toggle Switch
+     */
+    private toggleSwitch = () => {
+        console.log('GameScreen::toggleSwitch');
+
+        this.setState((prevState) => ({
+            isEnabled: !prevState.isEnabled
+        }));
+    }; // End of toggleSwitch()
+
+    /**
+     * Toggle Strike
+     * 
+     * @param team 
+     * @param index 
+     */
+    private toggleStrike = (team: 'team1' | 'team2', index: number) => {
+        console.log('GameScreen::toggleStrike');
+
+        const newTeamAttempts = { ...this.state.attempts };
+        const teamArray = [...newTeamAttempts[team]]; // copy the correct team array
+        teamArray[index] = !teamArray[index]; // toggle the strike
+        newTeamAttempts[team] = teamArray;
+        this.setState({ attempts: newTeamAttempts });
+    };// End of toggleStrike()
+
+    /**
+     * Toggle/Reveal Answer
+     * - will not hide once revealed
      * 
      * @param index {number}
      */
@@ -294,7 +294,33 @@ class GameScreen extends Component<Props, State> {
 
         newRevealed[index] = !newRevealed[index];
         this.setState({ revealedAnswers: newRevealed });
-    };
+    };// End of toggleAnswer()
+
+    // ===================== <<<<< Reset Methods >>>>> ====================== //    
+
+    /**
+     * Reset Attempts
+     */
+    private resetAttempts = (team: 'team1' | 'team2') => {
+        console.log('GameScreen::resetAttempts');
+
+        this.setState((prevState) => {
+            let newAttempts = { ...prevState.attempts };
+            newAttempts[team] = [false, false, false];
+            return { attempts: newAttempts };
+        });
+    };// End of resetAttempts()
+
+    /**
+     * Reset Answers
+     */
+    private resetAnswers = () => {
+        console.log('GameScreen::resetAnswers');
+
+        this.setState({
+            revealedAnswers: []
+        });
+    };// End of resetAnswers()
 
     /**
      * Reset Points
@@ -303,11 +329,71 @@ class GameScreen extends Component<Props, State> {
         this.setState({
             points: { team1: 0, team2: 0 }
         });
-    };
+    };// End of resetPoints()
 
     // ======================================================================= //
     // ===================== <<<<< Render Methods >>>>> ====================== //
     // ======================================================================= //
+
+    /**
+     * Render: Mini games modal
+     */
+    private renderMiniGamesModal = () => {
+        console.log('GameScreen::renderMiniGamesModal');
+        const { modalVisible } = this.state;
+
+        return (
+            <Modal
+                visible={modalVisible}
+                transparent={true}
+                animationType="fade"
+                onRequestClose={this.toggleMiniGamesModal}
+                supportedOrientations={['portrait', 'landscape', 'portrait-upside-down', 'landscape-left', 'landscape-right']}
+            >
+                <TouchableOpacity
+                    style={styles.modalContainer}
+                    activeOpacity={1}
+                    onPress={this.toggleMiniGamesModal}
+                >
+                    <TouchableOpacity
+                        activeOpacity={1}
+                        onPress={(e) => e.stopPropagation()}
+                        style={styles.modalContent}
+                    >
+                        <View style={styles.modalHeader}>
+                            <Text style={styles.modalTitle}>Select a Mini Game</Text>
+                            <TouchableOpacity onPress={this.toggleMiniGamesModal}>
+                                <Text style={styles.closeButton}>✕</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <FlatList
+                            data={miniGames}
+                            keyExtractor={(item) => item.id.toString()}
+                            renderItem={({ item }) => (
+                                <TouchableOpacity
+                                    style={styles.gameItem}
+                                    onPress={() => {
+                                        console.log('Selected game:', item.name);
+                                        this.toggleMiniGamesModal();
+                                    }}
+                                >
+                                    <Text style={styles.gameItemText}>{item.name}</Text>
+                                </TouchableOpacity>
+                            )}
+                        />
+                    </TouchableOpacity>
+                </TouchableOpacity>
+            </Modal>
+        )
+    };// End of renderMiniGamesModal()
+
+    /**
+     * Render: Questions modal
+     */
+
+    /**
+     * Render: Points modal
+     */
 
     /**
        * Render: Home Screen
@@ -334,7 +420,7 @@ class GameScreen extends Component<Props, State> {
                                     type={'text-only'}
                                     onPress={this.toggleMiniGamesModal}
                                 />
-                                <TouchableOpacity 
+                                <TouchableOpacity
                                     onPress={this.togglePointsModal}
                                     style={styles.pointsButtonContainer}
                                 >
@@ -342,7 +428,7 @@ class GameScreen extends Component<Props, State> {
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.centerContainer}>
-                                <TouchableOpacity 
+                                <TouchableOpacity
                                     onLongPress={this.navigateToHome}
                                     delayLongPress={1000}
                                     activeOpacity={0.8}
@@ -371,8 +457,8 @@ class GameScreen extends Component<Props, State> {
                                 <View style={styles.infoContainer}>
                                     <View style={styles.titleContainer}>
                                         <Text style={styles.teamName}>{'OG Barangay'}</Text>
-                                        <Text style={styles.pointsText}>{this.state.points.team1} pts</Text>
                                     </View>
+                                    <Text style={styles.pointsText}>{this.state.points.team1} pts</Text>
                                     <View style={styles.switchContainer}>
                                         <Switch
                                             trackColor={{ false: "light-red", true: "light-green" }}
@@ -382,6 +468,14 @@ class GameScreen extends Component<Props, State> {
                                             disabled={!isEnabled}
                                         />
                                     </View>
+                                    <Button
+                                        styleText={'std'}
+                                        title={'Clear'}
+                                        type={'primary'}
+                                        style={[styles.resetButton, !isEnabled && styles.disabled]}
+                                        onPress={() => this.resetAttempts('team1')}
+                                        disabled={!isEnabled}
+                                    />
                                 </View>
                                 <View style={styles.attemptsContainer}>
                                     {attempts &&
@@ -396,14 +490,7 @@ class GameScreen extends Component<Props, State> {
                                             </TouchableOpacity>
                                         ))}
                                 </View>
-                                <Button
-                                    styleText={'std'}
-                                    title={'Clear'}
-                                    type={'wide'}
-                                    style={[styles.resetButton, !isEnabled && styles.disabled]}
-                                    onPress={() => this.resetAttempts('team1')}
-                                    disabled={!isEnabled}
-                                />
+
                             </View>
 
                             {/* Team 2 */}
@@ -411,8 +498,8 @@ class GameScreen extends Component<Props, State> {
                                 <View style={styles.infoContainer}>
                                     <View style={styles.titleContainer}>
                                         <Text style={styles.teamName}>{'2nd GenZ'}</Text>
-                                        <Text style={styles.pointsText}>{this.state.points.team2} pts</Text>
                                     </View>
+                                    <Text style={styles.pointsText}>{this.state.points.team2} pts</Text>
                                     <View style={styles.switchContainer}>
                                         <Switch
                                             trackColor={{ false: "light-red", true: "light-green" }}
@@ -422,6 +509,14 @@ class GameScreen extends Component<Props, State> {
                                             disabled={isEnabled}
                                         />
                                     </View>
+                                    <Button
+                                        styleText={'std'}
+                                        title={'Clear'}
+                                        type={'primary'}
+                                        style={[styles.resetButton, isEnabled && styles.disabled]}
+                                        onPress={() => this.resetAttempts('team2')}
+                                        disabled={isEnabled}
+                                    />
                                 </View>
                                 <View style={styles.attemptsContainer}>
                                     {attempts &&
@@ -436,14 +531,7 @@ class GameScreen extends Component<Props, State> {
                                             </TouchableOpacity>
                                         ))}
                                 </View>
-                                <Button
-                                    styleText={'std'}
-                                    title={'Clear'}
-                                    type={'wide'}
-                                    style={[styles.resetButton, isEnabled && styles.disabled]}
-                                    onPress={() => this.resetAttempts('team2')}
-                                    disabled={isEnabled}
-                                />
+
                             </View>
                         </View>
 
@@ -473,7 +561,9 @@ class GameScreen extends Component<Props, State> {
                         </View>
                     </View> */}
 
-                        <Text style={styles.questionText}>{currentQuestion.question}</Text>
+                        <View style={[styles.questionsContainer, GlobalStyles.marginTopSmall]}>
+                            <Text style={styles.questionText}>{currentQuestion.question}</Text>
+                        </View>
                         {/* Questions & Answers */}
                         <FlatList
                             numColumns={2}
@@ -495,7 +585,7 @@ class GameScreen extends Component<Props, State> {
                                 </TouchableOpacity>
                             )}
                             // ListHeaderComponent={}
-                            contentContainerStyle={{ paddingBottom: 50 }}
+                            contentContainerStyle={GlobalStyles.marginTopSmall}
                             columnWrapperStyle={{ justifyContent: 'center', marginVertical: 5 }}
 
                         />
@@ -526,7 +616,9 @@ class GameScreen extends Component<Props, State> {
                         </View>
                     </View>)}
 
-                {/* Mini Games Modal */}
+                {this.renderMiniGamesModal()}
+
+                {/* Mini Games Modal
                 <Modal
                     visible={this.state.modalVisible}
                     transparent={true}
@@ -534,12 +626,12 @@ class GameScreen extends Component<Props, State> {
                     onRequestClose={this.toggleMiniGamesModal}
                     supportedOrientations={['portrait', 'landscape', 'portrait-upside-down', 'landscape-left', 'landscape-right']}
                 >
-                    <TouchableOpacity 
+                    <TouchableOpacity
                         style={styles.modalContainer}
                         activeOpacity={1}
                         onPress={this.toggleMiniGamesModal}
                     >
-                        <TouchableOpacity 
+                        <TouchableOpacity
                             activeOpacity={1}
                             onPress={(e) => e.stopPropagation()}
                             style={styles.modalContent}
@@ -567,7 +659,7 @@ class GameScreen extends Component<Props, State> {
                             />
                         </TouchableOpacity>
                     </TouchableOpacity>
-                </Modal>
+                </Modal> */}
 
                 {/* Questions Modal */}
                 <Modal
@@ -577,12 +669,12 @@ class GameScreen extends Component<Props, State> {
                     onRequestClose={this.toggleQuestionsModal}
                     supportedOrientations={['portrait', 'landscape', 'portrait-upside-down', 'landscape-left', 'landscape-right']}
                 >
-                    <TouchableOpacity 
+                    <TouchableOpacity
                         style={styles.modalContainer}
                         activeOpacity={1}
                         onPress={this.toggleQuestionsModal}
                     >
-                        <TouchableOpacity 
+                        <TouchableOpacity
                             activeOpacity={1}
                             onPress={(e) => e.stopPropagation()}
                             style={styles.modalContent}
@@ -620,12 +712,12 @@ class GameScreen extends Component<Props, State> {
                     onRequestClose={this.togglePointsModal}
                     supportedOrientations={['portrait', 'landscape', 'portrait-upside-down', 'landscape-left', 'landscape-right']}
                 >
-                    <TouchableOpacity 
+                    <TouchableOpacity
                         style={styles.pointsModalContainer}
                         activeOpacity={1}
                         onPress={this.togglePointsModal}
                     >
-                        <TouchableOpacity 
+                        <TouchableOpacity
                             activeOpacity={1}
                             onPress={(e) => e.stopPropagation()}
                             style={styles.pointsModalContent}
@@ -681,140 +773,6 @@ class GameScreen extends Component<Props, State> {
                     </TouchableOpacity>
                 </Modal>
             </ScreenContainer>
-
-            // <ScreenContainer withImageBackground={true}
-            // // style={styles.container}
-            // >
-            //     {/* <FlatList data={questions} renderItem={undefined}                
-            //     /> */}
-            //     <ScrollView showsVerticalScrollIndicator={false}
-            //         contentContainerStyle={styles.container}
-            //     >
-            //         {/* Banner */}
-            //         <View style={styles.bannerContainer}>
-            //             <Image
-            //                 source={images.barangay_feud_logo}
-            //                 style={GlobalStyles.image}
-            //                 resizeMode="contain"
-            //             />
-            //         </View>
-
-            //         {/* Stats */}
-            //         <View style={styles.statsContainer}>
-            //             {/* Team 1 */}
-            // <View style={styles.teamContainer}>
-            //     <View style={styles.infoContainer}>
-            //         <View style={styles.titleContainer}>
-            //             <Text style={styles.teamName}>{'OG Barangay'}</Text>
-            //         </View>
-            //         <View style={styles.switchContainer}>
-            //             <Switch
-            //                 trackColor={{ false: "light-red", true: "light-green" }}
-            //                 thumbColor={isEnabled ? "green" : "red"}
-            //                 onValueChange={this.toggleSwitch}
-            //                 value={isEnabled}
-            //                 disabled={!isEnabled}
-            //             />
-            //         </View>
-            //     </View>
-            //     <View style={styles.attemptsContainer}>
-            //         {attempts &&
-            //             attempts.team1.map((active, index) => (
-            //                 <TouchableOpacity
-            //                     key={index}
-            //                     onPress={() => this.toggleStrike('team1', index)}
-            //                     style={[styles.strike, active && styles.activeStrike]}
-            //                     disabled={!isEnabled}
-            //                 >
-            //                     <Text style={styles.strikeText}>X</Text>
-            //                 </TouchableOpacity>
-            //             ))}
-            //     </View>
-            // </View>
-
-            //             {/* Team 2 */}
-            // <View style={styles.teamContainer}>
-            //     <View style={styles.infoContainer}>
-            //         <View style={styles.titleContainer}>
-            //             <Text style={styles.teamName}>{'2nd GenZ'}</Text>
-            //         </View>
-            //         <View style={styles.switchContainer}>
-            //             <Switch
-            //                 trackColor={{ false: "light-red", true: "light-green" }}
-            //                 thumbColor={!isEnabled ? "green" : "red"}
-            //                 onValueChange={this.toggleSwitch}
-            //                 value={!isEnabled}
-            //                 disabled={isEnabled}
-            //             />
-            //         </View>
-            //     </View>
-            //     <View style={styles.attemptsContainer}>
-            //         {attempts &&
-            //             attempts.team2.map((active, index) => (
-            //                 <TouchableOpacity
-            //                     key={index}
-            //                     onPress={() => this.toggleStrike('team2', index)}
-            //                     style={[styles.strike, active && styles.activeStrike]}
-            //                     disabled={isEnabled}
-            //                 >
-            //                     <Text style={styles.strikeText}>X</Text>
-            //                 </TouchableOpacity>
-            //             ))}
-            //     </View>
-            // </View>
-            //         </View>
-
-            //         {/* Search */}
-            //         <View style={[styles.searchContainer, GlobalStyles.marginTopSmall]}>
-            //             <TextInput
-            //                 style={styles.input}
-            //                 placeholder="Enter answer here..."
-            //                 placeholderTextColor={'#FFD700'}
-            //             // value={text}
-            //             // onChangeText={setText}
-            //             />
-            //             <Button
-            //                 styleText={'std'}
-            //                 title={'Submit'}
-            //                 type={'wide'}
-            //                 style={styles.saveButton}
-            //             />
-            //             <Button
-            //                 styleText={'std'}
-            //                 title={'Reset'}
-            //                 type={'wide'}
-            //                 style={styles.resetButton}
-            //                 onPress={this.reset}
-            //             />
-            //         </View>
-
-            //         {/* Questions and Answers */}
-            //         <View style={[styles.questionsContainer, GlobalStyles.marginTop]}>
-            //             <Text style={styles.questionText}>{currentQuestion.question}</Text>
-
-            //             {currentQuestion.answers.map((answer, index) => (
-            //                 <TouchableOpacity
-            //                     key={index}
-            //                     style={[
-            //                         styles.answerBox,
-            //                         revealedAnswers[index] && styles.revealedAnswerBox,
-            //                     ]}
-            //                     onPress={() => this.revealAnswer(index)}
-            //                 >
-            //                     <Text style={styles.answerText}>
-            //                         {revealedAnswers[index] ? `${answer.label} - ${answer.points} pts` : `? - ${answer.points} pts`}
-            //                     </Text>
-            //                 </TouchableOpacity>
-            //             ))}
-
-            //             <View style={styles.paginationContainer}>
-            //                 <Button title="Previous Question" onPress={this.previousQuestion} />
-            //                 <Button title="Next Question" onPress={this.nextQuestion} />
-            //             </View>
-            //         </View>
-            //     </ScrollView>
-            // </ScreenContainer >
-
         );
     } // End of render()
 }// End of class
@@ -871,6 +829,7 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderRadius: 10,
         flex: 1,
+        flexShrink: 1,
         marginHorizontal: 10,
         padding: 10,
         flexDirection: 'column',
@@ -879,6 +838,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         alignItems: 'center',
+        flexWrap: 'wrap',
     },
     titleContainer: {
         alignItems: 'center',
@@ -901,6 +861,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginTop: 20,
         justifyContent: 'space-evenly',
+        flexWrap: 'wrap'
     },
 
     /* Text Styles */
@@ -911,7 +872,7 @@ const styles = StyleSheet.create({
         padding: 10
     },
     pointsText: {
-        fontSize: 14,
+        fontSize: 24,
         color: '#FFD700',
         textAlign: 'center',
         marginTop: 5
@@ -936,7 +897,7 @@ const styles = StyleSheet.create({
     },
     resetButton: {
         backgroundColor: 'rgb(236, 91, 85)',
-        width: '60%',
+        // width: '60%',
         alignSelf: 'center',
     },
     disabled: {
@@ -965,23 +926,25 @@ const styles = StyleSheet.create({
     },
 
     questionsContainer: {
-        flex: 1,
+        borderRadius: 10,
+        borderWidth: 1,
+        // flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 20
+        // backgroundColor: 'rgba(101, 196, 102, 0.5)',
+        backgroundColor: 'rgba(200, 50, 50, 0.5)',
+        padding: 20,
+        marginHorizontal: 20
+        // flexShrink: 1,
     },
     questionText: {
-        fontSize: 50,
+        fontSize: 35,
         fontWeight: 'bold',
-        marginVertical: 20,
-        textAlign: 'center',
+        // flex: 1,
+        // marginVertical: 20,
+        // textAlign: 'center',
         color: '#FFD700',
-        backgroundColor: 'rgba(200, 50, 50, 0.3)',
-        // flexShrink: 1,
-        borderRadius: 10,
-        marginHorizontal: 300,
-        borderWidth: 1
-        // color: '#8b0000'
+        // marginHorizontal: 300,
     },
     answerText: {
         fontSize: 24,
