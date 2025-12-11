@@ -1,4 +1,4 @@
-# MDG Project v2.0.0
+# MDG Project v2.5.0
 ```
 Start Date: June 12, 2025
 Termination Date: N/A
