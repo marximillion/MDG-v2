@@ -849,6 +849,7 @@ const styles = StyleSheet.create({
     },
     centerContainer: {
         flex: 1,
+        overflow: 'hidden',
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -857,12 +858,10 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     rightContainer: {
-        // borderWidth: 1,
         flex: 1,
         justifyContent: 'center'
     },
     statsContainer: {
-        // borderWidth: 2,
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 10,
@@ -871,14 +870,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(200, 50, 50, 0.3)',
         borderWidth: 3,
         borderRadius: 10,
-        // borderColor: 'green',
         flex: 1,
         marginHorizontal: 10,
-        // height: 200,
         padding: 10,
-        // alignItems: 'center',
-        // width: '45%',
-        // justifyContent: 'space-evenly'
         flexDirection: 'column',
     },
     infoContainer: {
@@ -887,37 +881,26 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     titleContainer: {
-        // borderColor: 'blue',
-        // flex: 1,
         alignItems: 'center',
-        // textAlignVertical: 'center'
     },
     switchContainer: {
         padding: 10
     },
     attemptsContainer: {
-        // borderWidth: 0.5,
-        // borderColor: 'yellow',
-        // height: 100,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         paddingVertical: 10
     },
 
     searchContainer: {
-        // borderWidth: 3,
-        // borderColor: 'green',
-        // padding: 10,
         flexDirection: 'row',
         alignItems: 'center',
-        // justifyContent: 'space-evenly',
     },
 
     paginationContainer: {
         flexDirection: 'row',
         marginTop: 20,
         justifyContent: 'space-evenly',
-        // width: '80%'
     },
 
     /* Text Styles */
