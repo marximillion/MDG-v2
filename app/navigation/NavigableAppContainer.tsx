@@ -17,6 +17,8 @@ import ProfileScreen from '../components/screens/practice/ProfileScreen';
 import SimpleWebViewScreen from '../components/screens/SimpleWebViewScreen';
 import { StackParamList } from './StackParamList';
 import TutorialScreen from '../components/screens/practice/TutorialScreen';
+import GameScreen from '../components/screens/game/GameScreen';
+import GameSplashScreen from '../components/screens/game/GameSplashScreen';
 
 /**
  * @file NavigableAppContainer.tsx
@@ -42,7 +44,7 @@ export function NavigableAppContainer() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName={'Home'}
+        initialRouteName={'GameSplash'}
         screenOptions={{ headerShown: false }}>
         <Stack.Screen
           name={'Home'}
@@ -50,6 +52,8 @@ export function NavigableAppContainer() {
           // initialParams={{colorScheme}}
           options={{ headerShown: false }}
         />
+        <Stack.Screen name={'GameSplash'} component={GameSplashScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name={'Game'} component={GameScreen} options={{ headerShown: false }}/>
         <Stack.Screen name={'Info'} component={InfoScreen} />
         <Stack.Screen name={'Profile'} component={ProfileScreen} />
         <Stack.Screen

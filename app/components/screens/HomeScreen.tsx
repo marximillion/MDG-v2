@@ -1,5 +1,5 @@
 /**
- * Copyright (c) MDG 2025.
+ * Copyright (c) MJDG 2025.
  */
 
 /**
@@ -8,7 +8,7 @@
 import Button from '../common/Button';
 import { Component, ReactNode } from 'react';
 import { GlobalStyles } from '../../styles/GlobalStyles';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { images } from '../../assets/images';
 import { RouteProp } from '@react-navigation/native';
 import ScreenContainer from '../common/ScreenContainer';
@@ -31,7 +31,7 @@ export interface HomeProps {
 /**
  * State
  */
-interface State {}
+interface State { }
 
 export default class HomeScreen extends Component<Props, State> {
   /**
@@ -95,6 +95,16 @@ export default class HomeScreen extends Component<Props, State> {
     navigation.navigate('Movie');
   }; // End of navigateMovie()
 
+  /**
+   * Navigation: Game Splash
+   * - Navigate to game splash screen
+   */
+  private navigateGameSplash = () => {
+    console.log('HomeScreen::navigateGameSplash');
+    const { navigation } = this.props;
+    navigation.navigate('GameSplash');
+  }; // End of navigateGameSplash()
+
   // ======================================================================= //
   // ===================== <<<<< Render Methods >>>>> ====================== //
   // ======================================================================= //
@@ -107,8 +117,11 @@ export default class HomeScreen extends Component<Props, State> {
   public render(): ReactNode {
     console.log('HomeScreen::render');
     return (
-      <ScreenContainer withImageBackground={true}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+      <ScreenContainer withImageBackground={true}
+      >
+        <ScrollView showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.container}
+        >
           <Button
             styleText={'sm'}
             title={'WELCOME'}
@@ -127,14 +140,14 @@ export default class HomeScreen extends Component<Props, State> {
             type={'text-only'}
             onPress={this.navigateMovie}
           />
+          <Button
+            styleText={'lg'}
+            title={'2025 Barangay Christmas Feud'}
+            type={'wide'}
+            onPress={this.navigateGameSplash}
+            style={styles.familyFeudButton}
+          />
           {/* TODO: Create an ImageTile (withOptions if its pressable) */}
-          <View style={styles.imageTile}>
-            <Image
-              source={images.ec_yellow_comic}
-              style={GlobalStyles.image}
-              resizeMode="contain"
-            />
-          </View>
           <View style={styles.imageTile}>
             <Image
               source={images.mdg_bald}
@@ -167,12 +180,25 @@ export default class HomeScreen extends Component<Props, State> {
 // ======================================================================= //
 
 const styles = StyleSheet.create({
+  container: {
+    // borderColor: 'red',
+    // borderWidth: 5,
+    // flex: 1,
+    // flexGrow: 1,
+    justifyContent: 'center',
+    // alignItems: 'center',
+  },
   imageTile: {
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
     borderRadius: 50,
-    borderWidth: 5,
+    // borderWidth: 5,
     height: 500,
     marginHorizontal: 20,
-    marginVertical: 5
+    marginVertical: 5,
+    overflow: 'hidden',
+  },
+  familyFeudButton: {
+    backgroundColor: 'red',
+    borderWidth: 3,
   }
 });

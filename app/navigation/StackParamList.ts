@@ -16,6 +16,8 @@ import { TutorialProps } from '../components/screens/practice/TutorialScreen';
  */
 export type StackParamList = {
   Car: undefined; // this is a route correct?
+  Game: undefined;
+  GameSplash: undefined;
   Home: HomeProps;
   Info: undefined;
   Movie: undefined;
