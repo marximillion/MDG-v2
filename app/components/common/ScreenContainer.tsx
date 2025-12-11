@@ -29,6 +29,7 @@ interface Props {
   withImageBackground: boolean;
   imageSource?: StyleProp<ImageSourcePropType>;
   children?: React.ReactNode;
+  resizeMode?: 'cover' | 'contain' | 'stretch' | 'repeat' | 'center';
 }
 
 /**
@@ -52,13 +53,15 @@ export default class ScreenContainer extends Component<Props> {
    * Render: With image background
    */
   private renderWithImageBackground = () => {
-    const { safeAreaViewStyle, imageSource } = this.props;
+    const { safeAreaViewStyle, imageSource, resizeMode } = this.props;
     const backgroundImage = imageSource ?? images.background_image;
+    const resize = resizeMode ?? 'cover';
+    // const backgroundImage = images.barangay_feud_logo;
 
     return (
       <ImageBackground
         source={backgroundImage}
-        resizeMode={'cover'}
+        resizeMode={resize}
         style={GlobalStyles.image}>
         <StatusBar translucent backgroundColor={'transparent'} />
         <SafeAreaView
@@ -114,8 +117,9 @@ export default class ScreenContainer extends Component<Props> {
 
 const styles = StyleSheet.create({
   safeAreaWithImageBackgroundContainer: {
+    backgroundColor: 'transparent',
     flex: 1,
-    paddingTop: space.vm7,
+    paddingTop: space.vm4,
     width: '100%'
   },
   safeAreaWithoutImageBackgroundContainer: {

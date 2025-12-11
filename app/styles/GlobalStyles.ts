@@ -5,6 +5,9 @@ export const GlobalStyles = StyleSheet.create({
   marginTop: {
     marginTop: 50
   },
+  marginTopSmall: {
+    marginTop: 15
+  },
 
   // Screen Container Styles
   safeAreaContainer: {
@@ -57,6 +60,7 @@ export const GlobalStyles = StyleSheet.create({
 
   // Image Styles
   image: {
+    backgroundColor: 'transparent',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

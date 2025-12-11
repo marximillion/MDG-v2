@@ -8,11 +8,14 @@
 import React from 'react';
 import { space } from '../../styles/size';
 import {
+  StyleProp,
   StyleSheet,
   Text,
+  TextStyle,
   TouchableOpacity,
   TouchableOpacityProps,
-  View
+  View,
+  ViewStyle
 } from 'react-native';
 
 /**
@@ -22,13 +25,16 @@ interface Props extends TouchableOpacityProps {
   styleText?: 'sm' | 'std' | 'lg';
   title?: string;
   type?: 'primary' | 'wide' | 'text-only';
+  style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
+  
 }
 
 /**
  * Button component
  */
 export default function Button(props: Props): React.JSX.Element {
-  const { styleText, title, type, ...touchableOpacityProps } = props;
+  const { style,styleText, title, type, ...touchableOpacityProps } = props;
 
   let buttonStyle, containerStyle;
   switch (type) {
@@ -63,8 +69,8 @@ export default function Button(props: Props): React.JSX.Element {
 
   return (
     <View style={containerStyle}>
-      <TouchableOpacity {...touchableOpacityProps} style={buttonStyle}>
-        <Text style={textStyle}>{title}</Text>
+      <TouchableOpacity {...touchableOpacityProps} style={[buttonStyle, style]}>
+        <Text style={[textStyle, props.textStyle]}>{title}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -100,7 +106,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   buttonWideContainer: {
-    alignSelf: 'stretch'
+    alignSelf: 'stretch',
+    flexGrow: 1,
+    // width: '100%'
   },
 
   // Button Styles
@@ -109,7 +117,6 @@ const styles = StyleSheet.create({
   },
   buttonWide: {
     ...base.button,
-    backgroundColor: '#e8a2fa'
   },
   buttonOnlyText: {
     ...base.button,
