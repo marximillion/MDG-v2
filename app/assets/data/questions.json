@@ -1,0 +1,178 @@
+[
+    {
+        "id": 1,
+        "question": "What can you find in the north pole?",
+        "answers": [
+            {
+                "label": "Snow",
+                "points": 5
+            },
+            {
+                "label": "Santa Claus",
+                "points": 4
+            },
+            {
+                "label": "Santa's Elves",
+                "points": 3
+            },
+            {
+                "label": "Reindeers",
+                "points": 2
+            },
+            {
+                "label": "Santa's Sleigh",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "question": "Name a popular Christmas movie",
+        "answers": [
+            {
+                "label": "Home Alone",
+                "points": 6
+            },
+            {
+                "label": "Polar Express",
+                "points": 5
+            },
+            {
+                "label": "A Christmas Carol",
+                "points": 4
+            },
+            {
+                "label": "Elf",
+                "points": 3
+            },
+            {
+                "label": "The Grinch",
+                "points": 2
+            },
+            {
+                "label": "Die Hard",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "question": "Common Filipino Christmas decorations",
+        "answers": [
+            {
+                "label": "Parol",
+                "points": 5
+            },
+            {
+                "label": "Nativity Scene",
+                "points": 4
+            },
+            {
+                "label": "Christmas Wreath",
+                "points": 3
+            },
+            {
+                "label": "Christmas Tree",
+                "points": 2
+            },
+            {
+                "label": "Christmas Lights",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "question": "Santa's reindeers (NOT INCLUDING RUDOLPH)",
+        "answers": [
+            {
+                "label": "Dasher",
+                "points": 8
+            },
+            {
+                "label": "Dancer",
+                "points": 7
+            },
+            {
+                "label": "Prancer",
+                "points": 6
+            },
+            {
+                "label": "Vixen",
+                "points": 5
+            },
+            {
+                "label": "Comet",
+                "points": 4
+            },
+            {
+                "label": "Cupid",
+                "points": 3
+            },
+            {
+                "label": "Donner",
+                "points": 2
+            },
+            {
+                "label": "Blitzen",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "question": "Filipino Christmas Traditions",
+        "answers": [
+            {
+                "label": "Noche Buena",
+                "points": 4
+            },
+            {
+                "label": "Simbang Gabi",
+                "points": 3
+            },
+            {
+                "label": "Monito Monita",
+                "points": 2
+            },
+            {
+                "label": "Carolling",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "question": "Popular Christmas songs",
+        "answers": [
+            {
+                "label": "All I want for Christmas is you",
+                "points": 7
+            },
+            {
+                "label": "Christmas in our hearts",
+                "points": 6
+            },
+            {
+                "label": "Last Christmas",
+                "points": 5
+            },
+            {
+                "label": "Jingle Bells",
+                "points": 4
+            },
+            {
+                "label": "Joy to the World",
+                "points": 3
+            },
+            {
+                "label": "Rudolph the Red-Nosed Reindeer",
+                "points": 2
+            },
+            {
+                "label": "Pasko Na Sinta Ko",
+                "points": 1
+            }
+        ]
+    }
+]
