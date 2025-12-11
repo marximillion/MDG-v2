@@ -1,6 +1,7 @@
 export const images = Object.freeze({
   // Background Images
   background_image: require('./images/backgroundImage.jpeg'),
+  barangay_feud_logo: require('./images/2025-barangay-christmas-feud-transparent.png'),
 
   // Car Images
   csx: require('./images/cars/csx.jpg'),
