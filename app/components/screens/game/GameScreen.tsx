@@ -618,49 +618,6 @@ class GameScreen extends Component<Props, State> {
 
                 {this.renderMiniGamesModal()}
 
-                {/* Mini Games Modal
-                <Modal
-                    visible={this.state.modalVisible}
-                    transparent={true}
-                    animationType="fade"
-                    onRequestClose={this.toggleMiniGamesModal}
-                    supportedOrientations={['portrait', 'landscape', 'portrait-upside-down', 'landscape-left', 'landscape-right']}
-                >
-                    <TouchableOpacity
-                        style={styles.modalContainer}
-                        activeOpacity={1}
-                        onPress={this.toggleMiniGamesModal}
-                    >
-                        <TouchableOpacity
-                            activeOpacity={1}
-                            onPress={(e) => e.stopPropagation()}
-                            style={styles.modalContent}
-                        >
-                            <View style={styles.modalHeader}>
-                                <Text style={styles.modalTitle}>Select a Mini Game</Text>
-                                <TouchableOpacity onPress={this.toggleMiniGamesModal}>
-                                    <Text style={styles.closeButton}>✕</Text>
-                                </TouchableOpacity>
-                            </View>
-                            <FlatList
-                                data={miniGames}
-                                keyExtractor={(item) => item.id.toString()}
-                                renderItem={({ item }) => (
-                                    <TouchableOpacity
-                                        style={styles.gameItem}
-                                        onPress={() => {
-                                            console.log('Selected game:', item.name);
-                                            this.toggleMiniGamesModal();
-                                        }}
-                                    >
-                                        <Text style={styles.gameItemText}>{item.name}</Text>
-                                    </TouchableOpacity>
-                                )}
-                            />
-                        </TouchableOpacity>
-                    </TouchableOpacity>
-                </Modal> */}
-
                 {/* Questions Modal */}
                 <Modal
                     visible={this.state.questionsModalVisible}
