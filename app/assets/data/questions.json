@@ -232,7 +232,7 @@
             {
                 "label": "Pancit",
                 "points": 1
-            },
+            }
         ]
     },
     {
@@ -258,7 +258,7 @@
             {
                 "label": "Losing a reindeer",
                 "points": 1
-            },
+            }
         ]
     },
     {
@@ -284,7 +284,7 @@
             {
                 "label": "Cold weather",
                 "points": 1
-            },
+            }
         ]
     },
     {
@@ -310,7 +310,7 @@
             {
                 "label": "Charlie Brown",
                 "points": 1
-            },
+            }
         ]
     },
     {
@@ -320,15 +320,15 @@
             {
                 "label": "Open gits",
                 "points": 4
-            }
+            },
             {
                 "label": "Take pictures",
                 "points": 3
-            }
+            },
             {
                 "label": "Go to church",
                 "points": 2
-            }
+            },
             {
                 "label": "Eat breakfast",
                 "points": 1
@@ -342,19 +342,19 @@
             {
                 "label": "Sleigh",
                 "points": 5
-            }
+            },
             {
                 "label": "Presents",
                 "points": 4
-            }
+            },
             {
                 "label": "Reindeers",
                 "points": 3
-            }
+            },
             {
                 "label": "Naught/nice list",
                 "points": 2
-            }
+            },
             {
                 "label": "Elves",
                 "points": 1
@@ -372,7 +372,7 @@
             {
                 "label": "December",
                 "points": 10
-            },
+            }
         ]
-    },
+    }
 ]
